@@ -1,0 +1,26 @@
+Start django server:
+- mene distributed_systems kansioon
+(teidän pitää ehkä luoda venv ja installata sinne kaikkee??)
+- activate venv: .\venv\Scripts\activate
+- mene crud_project kansioon
+- python manage.py runserver
+
+Get all users from the database:
+http://127.0.0.1:8000/api/users/
+
+-------------------------------------------
+server.py ja client.py toimii (käyttää grpc:tä)
+clinetista nimi lisätään databaseen kun tekee requestin serverille
+Voi testata vscodessa 2 terminaalia auki, toisessa python server.py ja toisessa python client.py
+mongodb atlaksesta voi kattoo mitä siel on (voin kattoo jos lisäilette sinne jotain)
+
+-------------------------------------------
+pymodbus testing kansiossa modbus testailua ja ne ei toimi
+
+-------------------------------------------
+
+Ei pitäis tarvita:
+django superuser: user:user
+mongoDB user: dbUser:dbUser
+mongodb connection url: mongodb+srv://dbUser:dbUser@cluster0.xknwi.mongodb.net/retryWrites=true&w=majority&appName=Cluster0
+
