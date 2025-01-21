@@ -16,8 +16,19 @@ def create_user(name: str):
     return str(result.inserted_id)
 
 # READ: Get a user by name
-def get_user(name: str):
+def get_user_by_name(name: str):
     return users_collection.find_one({"name": name})
+
+# READ: Get a user by ID
+def get_user_by_id(user_id: str):
+    try:
+        # Convert the string ID to ObjectId
+        object_id = ObjectId(user_id)
+        return users_collection.find_one({"_id": object_id})
+    except Exception as e:
+        # Handle invalid ObjectId or other errors
+        print(f"Error: {e}")
+        return None
 
 # READ: Get all users
 def get_all_users():

@@ -2,7 +2,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .utils import create_user, get_user, get_all_users, update_user, delete_user
+from .utils import create_user, get_user_by_id, get_user_by_name, get_all_users, update_user, delete_user
 from .serializers import UserSerializer
 from django.http import HttpResponse
 
@@ -25,15 +25,23 @@ class UserListView(APIView):
         serialized_users = UserSerializer(users, many=True)
         return Response(serialized_users.data)
 
-'''
-class UserRetrieveView(APIView):
+
+class UserRetrieveByIdView(APIView):
     def get(self, request, user_id):
         user = get_user_by_id(user_id)
         if user:
             serialized_user = UserSerializer(user)
             return Response(serialized_user.data)
         return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
-'''
+
+class UserRetrieveByNameView(APIView):
+    def get(self, request, name):
+        user = get_user_by_name(name)
+        if user:
+            serialized_user = UserSerializer(user)
+            return Response(serialized_user.data)
+        return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+
 
 class UserUpdateView(APIView):
     def put(self, request, user_id):

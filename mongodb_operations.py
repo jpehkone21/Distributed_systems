@@ -1,3 +1,4 @@
+'''
 from pymongo import MongoClient
 
 # Connect to the MongoDB server (local server or remote)
@@ -16,3 +17,4 @@ def create_user(name):
 # Function to find a user in MongoDB by name
 def find_user(name):
     return users_collection.find_one({"name": name})
+'''
