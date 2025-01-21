@@ -8,11 +8,13 @@ def run():
         stub = service_pb2_grpc.GreeterStub(channel)
         
         # Call the SayHello method
+        # This request adds a new user to the database
         hello_request = service_pb2.HelloRequest(name="Bob")
         hello_response = stub.SayHello(hello_request)
         print("Server responded to SayHello: " + hello_response.message)
         
         # Call the SayGoodbye method
+        # This request finds the user from the database
         goodbye_request = service_pb2.GoodbyeRequest(name="Bob")
         goodbye_response = stub.SayGoodbye(goodbye_request)
         print("Server responded to SayGoodbye: " + goodbye_response.message)

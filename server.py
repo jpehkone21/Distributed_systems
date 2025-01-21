@@ -7,17 +7,20 @@ import requests
 
 class Greeter(service_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
-        # Create a new user in MongoDB
-        #user_id = create_user(request.name)
+
+        # Use REST api to add new user to mongodb
         myobj = {'name': request.name}
         response = requests.post("http://127.0.0.1:8000/api/users/create/", json = myobj)
         
+        #  HERE send(publish) message to kafka broker that new user is added
+        #  Kafka consumer(subscriber) can then do something with that information
+
         # Respond with a greeting message
         return service_pb2.HelloResponse(message=f"Hello, {request.name}! (User ID: {response.text})")
 
     def SayGoodbye(self, request, context):
-        # Find the user in MongoDB by name
-        #user = find_user(request.name)
+
+        # use REST api to find the user in MongoDB by name
         response = requests.get("http://127.0.0.1:8000/api/users/name/" + request.name + "/")
         
         if response.ok:

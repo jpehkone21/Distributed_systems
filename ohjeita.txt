@@ -1,3 +1,9 @@
+Tavoitteena (ehkä):
+client (client.py) tekee requestin serverille (server.py), server lisää käyttäjän 
+databaseen django apin kautta, ja server lähettää messagen kafka brokerille että
+uusi käyttäjä lisätty. kafka consumer voi lukea messagen myöhemmin ja tehdä jotain sillä tiedolla
+
+------------------------------------------
 Start django server:
 - mene distributed_systems kansioon
 (teidän pitää ehkä luoda venv ja installata sinne kaikkee??)
@@ -18,6 +24,11 @@ mongodb atlaksesta voi kattoo mitä siel on (voin kattoo jos lisäilette sinne j
 pymodbus testing kansiossa modbus testailua ja ne ei toimi
 
 -------------------------------------------
+Kafka (not implemented yet):
+Pitää luoda broker ja sinne topic? (tehdään commandlinella)
+Pitää luoda kafka consumer, joka hakee brokerilta uudet messaget
+Pitää lisätä producer koodi server.py tiedostoon
+
 
 Ei pitäis tarvita:
 django superuser: user:user
