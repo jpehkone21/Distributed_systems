@@ -24,10 +24,18 @@ mongodb atlaksesta voi kattoo mitä siel on (voin kattoo jos lisäilette sinne j
 pymodbus testing kansiossa modbus testailua ja ne ei toimi
 
 -------------------------------------------
-Kafka (not implemented yet):
+Kafka (tehty):
 Pitää luoda broker ja sinne topic? (tehdään commandlinella)
 Pitää luoda kafka consumer, joka hakee brokerilta uudet messaget
 Pitää lisätä producer koodi server.py tiedostoon
+
+kafka ajaminen:
+- mene kafka kansioon (C:\kafka)
+- avaa kaksi commandlinea ja aja: 
+    - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+    - .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
 
 
 Ei pitäis tarvita:
