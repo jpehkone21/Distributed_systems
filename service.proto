@@ -19,8 +19,17 @@ message GoodbyeResponse {
   string message = 1;
 }
 
+message TemperatureRequest {
+    string location = 1;
+}
+
+message TemperatureResponse {
+    float temperature = 1;
+}
+
 // Define the service
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloResponse);
   rpc SayGoodbye (GoodbyeRequest) returns (GoodbyeResponse);
+  rpc GetTemperature (TemperatureRequest) returns (TemperatureResponse);
 }

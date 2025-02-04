@@ -35,8 +35,26 @@ kafka ajaminen:
     - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
     - .\bin\windows\kafka-server-start.bat .\config\server.properties
 
+----------------------------------------
+Prometheus:
+asennus: lataa .zip nettisivulta -> pura 
+        -> muokkaa .yaml tiedostoon:
+global:
+  scrape_interval: 5s           <--- kuinka usein hakee datan
 
+scrape_configs:
+  - job_name: "grpc_service"
+    static_configs:
+      - targets: ["localhost:8001"]         <---- mistä hakee datan
 
+laita päälle: mene kansioon missä .yaml tiedosto ja prometheus on
+komentoriviltä: prometheus --config.file=prometheus.yml
+(tässä voi laittaa serverin päälle ja tehä pari requestia clientilla)
+browserilla osoitteessa: http://localhost:9090/query 
+kirjoita query hakuun grpc...
+
+Grafana on olemassa mutta sen voi ilmeisesti yhdistää vasta kun prometheus on dockerin sisällä(??)
+---------------------------------------------------
 
 Ei pitäis tarvita:
 django superuser: user:user

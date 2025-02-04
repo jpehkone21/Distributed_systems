@@ -5,7 +5,7 @@ import warnings
 
 import service_pb2 as service__pb2
 
-GRPC_GENERATED_VERSION = '1.69.0'
+GRPC_GENERATED_VERSION = '1.70.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -45,6 +45,11 @@ class GreeterStub(object):
                 request_serializer=service__pb2.GoodbyeRequest.SerializeToString,
                 response_deserializer=service__pb2.GoodbyeResponse.FromString,
                 _registered_method=True)
+        self.GetTemperature = channel.unary_unary(
+                '/example.Greeter/GetTemperature',
+                request_serializer=service__pb2.TemperatureRequest.SerializeToString,
+                response_deserializer=service__pb2.TemperatureResponse.FromString,
+                _registered_method=True)
 
 
 class GreeterServicer(object):
@@ -63,6 +68,12 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetTemperature(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -75,6 +86,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.SayGoodbye,
                     request_deserializer=service__pb2.GoodbyeRequest.FromString,
                     response_serializer=service__pb2.GoodbyeResponse.SerializeToString,
+            ),
+            'GetTemperature': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTemperature,
+                    request_deserializer=service__pb2.TemperatureRequest.FromString,
+                    response_serializer=service__pb2.TemperatureResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -132,6 +148,33 @@ class Greeter(object):
             '/example.Greeter/SayGoodbye',
             service__pb2.GoodbyeRequest.SerializeToString,
             service__pb2.GoodbyeResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetTemperature(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/example.Greeter/GetTemperature',
+            service__pb2.TemperatureRequest.SerializeToString,
+            service__pb2.TemperatureResponse.FromString,
             options,
             channel_credentials,
             insecure,
