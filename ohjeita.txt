@@ -46,12 +46,17 @@ scrape_configs:
   - job_name: "grpc_service"
     static_configs:
       - targets: ["localhost:8001"]         <---- mistä hakee datan
+- job_name: "django_app"
+    static_configs:
+      - targets: ["localhost:8000"]
+
 
 laita päälle: mene kansioon missä .yaml tiedosto ja prometheus on
 komentoriviltä: prometheus --config.file=prometheus.yml
 (tässä voi laittaa serverin päälle ja tehä pari requestia clientilla)
+(djangossa toimii vain create userissa)
 browserilla osoitteessa: http://localhost:9090/query 
-kirjoita query hakuun grpc...
+kirjoita query hakuun grpc... or mongodb...
 
 Grafana on olemassa mutta sen voi ilmeisesti yhdistää vasta kun prometheus on dockerin sisällä(??)
 ---------------------------------------------------

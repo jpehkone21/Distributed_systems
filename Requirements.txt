@@ -1,0 +1,10 @@
+Django
+django-prometheus
+djangorestframework
+grpcio
+grpcio-tools
+kafka-python
+kafka-python-ng
+prometheus_client
+pymongo
+requests

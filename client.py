@@ -10,13 +10,13 @@ def run():
         # Test GetTemperature method
         response = stub.GetTemperature(service_pb2.TemperatureRequest(location="New York"))
         print(f"Simulated Temperature in New York: {response.temperature}°C")
-        '''
+        
         # Call the SayHello method
         # This request adds a new user to the database
         hello_request = service_pb2.HelloRequest(name="kissa")
         hello_response = stub.SayHello(hello_request)
         print("Server responded to SayHello: " + hello_response.message)
-        
+        '''
         # Call the SayGoodbye method
         # This request finds the user from the database
         goodbye_request = service_pb2.GoodbyeRequest(name="kissa")
