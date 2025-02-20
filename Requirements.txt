@@ -8,3 +8,5 @@ kafka-python-ng
 prometheus_client
 pymongo
 requests
+openai
+paho-mqtt<2.0.0

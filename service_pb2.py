@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x07\x65xample\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1e\n\x0eGoodbyeRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\" \n\rHelloResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\"\n\x0fGoodbyeResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\x12TemperatureRequest\x12\x10\n\x08location\x18\x01 \x01(\t\"*\n\x13TemperatureResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x32\xd2\x01\n\x07Greeter\x12\x39\n\x08SayHello\x12\x15.example.HelloRequest\x1a\x16.example.HelloResponse\x12?\n\nSayGoodbye\x12\x17.example.GoodbyeRequest\x1a\x18.example.GoodbyeResponse\x12K\n\x0eGetTemperature\x12\x1b.example.TemperatureRequest\x1a\x1c.example.TemperatureResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x07\x65xample\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"$\n\x0e\x46\x61\x63toryRequest\x12\x12\n\nuser_query\x18\x01 \x01(\t\" \n\rHelloResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"+\n\x0f\x46\x61\x63toryResponse\x12\x18\n\x10response_message\x18\x01 \x01(\t2\x87\x01\n\x0cSmartFactory\x12\x39\n\x08SayHello\x12\x15.example.HelloRequest\x1a\x16.example.HelloResponse\x12<\n\x07\x46\x61\x63tory\x12\x17.example.FactoryRequest\x1a\x18.example.FactoryResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,16 +33,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_HELLOREQUEST']._serialized_start=26
   _globals['_HELLOREQUEST']._serialized_end=54
-  _globals['_GOODBYEREQUEST']._serialized_start=56
-  _globals['_GOODBYEREQUEST']._serialized_end=86
-  _globals['_HELLORESPONSE']._serialized_start=88
-  _globals['_HELLORESPONSE']._serialized_end=120
-  _globals['_GOODBYERESPONSE']._serialized_start=122
-  _globals['_GOODBYERESPONSE']._serialized_end=156
-  _globals['_TEMPERATUREREQUEST']._serialized_start=158
-  _globals['_TEMPERATUREREQUEST']._serialized_end=196
-  _globals['_TEMPERATURERESPONSE']._serialized_start=198
-  _globals['_TEMPERATURERESPONSE']._serialized_end=240
-  _globals['_GREETER']._serialized_start=243
-  _globals['_GREETER']._serialized_end=453
+  _globals['_FACTORYREQUEST']._serialized_start=56
+  _globals['_FACTORYREQUEST']._serialized_end=92
+  _globals['_HELLORESPONSE']._serialized_start=94
+  _globals['_HELLORESPONSE']._serialized_end=126
+  _globals['_FACTORYRESPONSE']._serialized_start=128
+  _globals['_FACTORYRESPONSE']._serialized_end=171
+  _globals['_SMARTFACTORY']._serialized_start=174
+  _globals['_SMARTFACTORY']._serialized_end=309
 # @@protoc_insertion_point(module_scope)

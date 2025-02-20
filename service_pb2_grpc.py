@@ -25,7 +25,7 @@ if _version_not_supported:
     )
 
 
-class GreeterStub(object):
+class SmartFactoryStub(object):
     """Define the service
     """
 
@@ -36,23 +36,18 @@ class GreeterStub(object):
             channel: A grpc.Channel.
         """
         self.SayHello = channel.unary_unary(
-                '/example.Greeter/SayHello',
+                '/example.SmartFactory/SayHello',
                 request_serializer=service__pb2.HelloRequest.SerializeToString,
                 response_deserializer=service__pb2.HelloResponse.FromString,
                 _registered_method=True)
-        self.SayGoodbye = channel.unary_unary(
-                '/example.Greeter/SayGoodbye',
-                request_serializer=service__pb2.GoodbyeRequest.SerializeToString,
-                response_deserializer=service__pb2.GoodbyeResponse.FromString,
-                _registered_method=True)
-        self.GetTemperature = channel.unary_unary(
-                '/example.Greeter/GetTemperature',
-                request_serializer=service__pb2.TemperatureRequest.SerializeToString,
-                response_deserializer=service__pb2.TemperatureResponse.FromString,
+        self.Factory = channel.unary_unary(
+                '/example.SmartFactory/Factory',
+                request_serializer=service__pb2.FactoryRequest.SerializeToString,
+                response_deserializer=service__pb2.FactoryResponse.FromString,
                 _registered_method=True)
 
 
-class GreeterServicer(object):
+class SmartFactoryServicer(object):
     """Define the service
     """
 
@@ -62,45 +57,34 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SayGoodbye(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetTemperature(self, request, context):
+    def Factory(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_GreeterServicer_to_server(servicer, server):
+def add_SmartFactoryServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SayHello': grpc.unary_unary_rpc_method_handler(
                     servicer.SayHello,
                     request_deserializer=service__pb2.HelloRequest.FromString,
                     response_serializer=service__pb2.HelloResponse.SerializeToString,
             ),
-            'SayGoodbye': grpc.unary_unary_rpc_method_handler(
-                    servicer.SayGoodbye,
-                    request_deserializer=service__pb2.GoodbyeRequest.FromString,
-                    response_serializer=service__pb2.GoodbyeResponse.SerializeToString,
-            ),
-            'GetTemperature': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetTemperature,
-                    request_deserializer=service__pb2.TemperatureRequest.FromString,
-                    response_serializer=service__pb2.TemperatureResponse.SerializeToString,
+            'Factory': grpc.unary_unary_rpc_method_handler(
+                    servicer.Factory,
+                    request_deserializer=service__pb2.FactoryRequest.FromString,
+                    response_serializer=service__pb2.FactoryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'example.Greeter', rpc_method_handlers)
+            'example.SmartFactory', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('example.Greeter', rpc_method_handlers)
+    server.add_registered_method_handlers('example.SmartFactory', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class Greeter(object):
+class SmartFactory(object):
     """Define the service
     """
 
@@ -118,7 +102,7 @@ class Greeter(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/example.Greeter/SayHello',
+            '/example.SmartFactory/SayHello',
             service__pb2.HelloRequest.SerializeToString,
             service__pb2.HelloResponse.FromString,
             options,
@@ -132,7 +116,7 @@ class Greeter(object):
             _registered_method=True)
 
     @staticmethod
-    def SayGoodbye(request,
+    def Factory(request,
             target,
             options=(),
             channel_credentials=None,
@@ -145,36 +129,9 @@ class Greeter(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/example.Greeter/SayGoodbye',
-            service__pb2.GoodbyeRequest.SerializeToString,
-            service__pb2.GoodbyeResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def GetTemperature(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/example.Greeter/GetTemperature',
-            service__pb2.TemperatureRequest.SerializeToString,
-            service__pb2.TemperatureResponse.FromString,
+            '/example.SmartFactory/Factory',
+            service__pb2.FactoryRequest.SerializeToString,
+            service__pb2.FactoryResponse.FromString,
             options,
             channel_credentials,
             insecure,
