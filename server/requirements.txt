@@ -1,0 +1,16 @@
+Django
+django-prometheus
+djangorestframework
+grpcio
+grpcio-tools
+kafka-python
+kafka-python-ng
+prometheus_client
+pymongo
+requests
+openai
+paho-mqtt<2.0.0
+protobuf
+passlib
+bcrypt
+python-jose

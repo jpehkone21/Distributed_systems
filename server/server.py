@@ -11,6 +11,16 @@ import paho.mqtt.client as paho
 from paho import mqtt
 import asyncio
 
+import auth_pb2 as auth_pb2
+import auth_pb2_grpc  as auth_pb2_grpc# Import the authentication service
+#from authentication import auth_pb2 as auth_pb2
+#from authentication import auth_pb2_grpc as auth_pb2_grpc
+
+AUTH_SERVER_IP = "127.0.0.1"
+# Connect to Auth Microservice
+auth_channel = grpc.insecure_channel(f"{AUTH_SERVER_IP}:50052")
+auth_stub = auth_pb2_grpc.AuthServiceStub(auth_channel)
+
 mqtt_response_future = None
 
 REQUEST_COUNT = Counter('grpc_requests_total', 'Total gRPC Requests', ['method', 'status'])
@@ -81,6 +91,12 @@ class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
             return service_pb2.HelloResponse(message=f"Hello, {request.name}! (User ID: {response.text})")
 
     async def Factory(self, request, context):
+        # Validate token with the Auth Microservice
+        auth_response = auth_stub.ValidateToken(auth_pb2.ValidateRequest(token=request.token))
+        if not auth_response.valid:
+            context.set_code(grpc.StatusCode.UNAUTHENTICATED)
+            context.set_details("Invalid token")
+            return service_pb2.FactoryResponse(data="")
 
         global mqtt_response_future
 

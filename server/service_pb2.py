@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x07\x65xample\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"$\n\x0e\x46\x61\x63toryRequest\x12\x12\n\nuser_query\x18\x01 \x01(\t\" \n\rHelloResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"+\n\x0f\x46\x61\x63toryResponse\x12\x18\n\x10response_message\x18\x01 \x01(\t2\x87\x01\n\x0cSmartFactory\x12\x39\n\x08SayHello\x12\x15.example.HelloRequest\x1a\x16.example.HelloResponse\x12<\n\x07\x46\x61\x63tory\x12\x17.example.FactoryRequest\x1a\x18.example.FactoryResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x07\x65xample\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"3\n\x0e\x46\x61\x63toryRequest\x12\x12\n\nuser_query\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\" \n\rHelloResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"+\n\x0f\x46\x61\x63toryResponse\x12\x18\n\x10response_message\x18\x01 \x01(\t2\x87\x01\n\x0cSmartFactory\x12\x39\n\x08SayHello\x12\x15.example.HelloRequest\x1a\x16.example.HelloResponse\x12<\n\x07\x46\x61\x63tory\x12\x17.example.FactoryRequest\x1a\x18.example.FactoryResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,11 +34,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_HELLOREQUEST']._serialized_start=26
   _globals['_HELLOREQUEST']._serialized_end=54
   _globals['_FACTORYREQUEST']._serialized_start=56
-  _globals['_FACTORYREQUEST']._serialized_end=92
-  _globals['_HELLORESPONSE']._serialized_start=94
-  _globals['_HELLORESPONSE']._serialized_end=126
-  _globals['_FACTORYRESPONSE']._serialized_start=128
-  _globals['_FACTORYRESPONSE']._serialized_end=171
-  _globals['_SMARTFACTORY']._serialized_start=174
-  _globals['_SMARTFACTORY']._serialized_end=309
+  _globals['_FACTORYREQUEST']._serialized_end=107
+  _globals['_HELLORESPONSE']._serialized_start=109
+  _globals['_HELLORESPONSE']._serialized_end=141
+  _globals['_FACTORYRESPONSE']._serialized_start=143
+  _globals['_FACTORYRESPONSE']._serialized_end=186
+  _globals['_SMARTFACTORY']._serialized_start=189
+  _globals['_SMARTFACTORY']._serialized_end=324
 # @@protoc_insertion_point(module_scope)

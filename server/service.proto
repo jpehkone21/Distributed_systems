@@ -9,6 +9,7 @@ message HelloRequest {
 
 message FactoryRequest {
   string user_query = 1;
+  string token = 2;
 }
 
 message HelloResponse {
