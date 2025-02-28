@@ -4,8 +4,8 @@ import service_pb2_grpc as service_pb2_grpc
 import auth_pb2 as auth_pb2
 import auth_pb2_grpc as auth_pb2_grpc
 
-AUTH_SERVER_IP = "127.0.0.1"
-SENSOR_SERVER_IP = "127.0.0.1"
+AUTH_SERVER_IP = "127.0.0.1"    #86.50.231.25
+SENSOR_SERVER_IP = "127.0.0.1"  #86.50.231.25
 
 def authenticate(username, password):
     """ Get a JWT token from the authentication service. """
@@ -18,13 +18,13 @@ def authenticate(username, password):
         print(auth_response)
 
         if auth_response.access_token:
-            print(f"✅ Authentication successful! Received Token: {auth_response.access_token[:10]}...")  # Hide full token
+            print(f"✅ Authentication successful!✍️(◔◡◔) Received Token: {auth_response.access_token[:10]}...")  # Hide full token
             return auth_response.access_token
         else:
-            print("❌ Authentication failed: Invalid credentials.")
+            print("❌ Authentication failed (´。＿。｀): Invalid credentials.")
             return None
     except Exception as e:
-        print(f"⚠️ Error connecting to Auth Service: {e}")
+        print(f"⚠️ Error connecting to Auth Service ╚(•⌂•)╝: {e}")
         return None
 
 
