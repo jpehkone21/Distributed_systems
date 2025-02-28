@@ -47,7 +47,8 @@ while True:
     client.publish(TOPIC, json.dumps(data))
     print(f"Published: {data}")
 
-    response = requests.post("http://86.50.231.25:8000/api/users/create/", json = data)
-    print(f"got a response from crud api: {response.text}")
+    #Adding generated data to mongodb, django server needs to be running, not tested
+    #response = requests.post("http://86.50.231.25:8000/api/users/create/", json = data)
+    #print(f"got a response from crud api: {response.text}")
     
     time.sleep(5)  # Adjust the interval as needed

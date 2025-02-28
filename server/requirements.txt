@@ -14,3 +14,4 @@ protobuf
 passlib
 bcrypt
 python-jose
+numpy
