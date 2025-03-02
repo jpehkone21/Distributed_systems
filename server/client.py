@@ -57,3 +57,9 @@ if __name__ == '__main__':
         print("authentication ok")
         user_query = input("Enter user query: ")
         run(user_query=user_query, token=token)
+        next = input("\nDo you want to ask another question? (y/n): ")
+        while (next == "y"):
+            user_query2 = input("\nEnter user query: ")
+            run(user_query=user_query2, token=token)
+            next = input("\nDo you want to ask another question? (y/n): ")
+                  

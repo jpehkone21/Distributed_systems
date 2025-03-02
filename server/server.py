@@ -4,7 +4,7 @@ from concurrent import futures
 import service_pb2
 import service_pb2_grpc
 import requests
-from kafka import KafkaProducer
+#from kafka import KafkaProducer
 #import prometheus_client
 from prometheus_client import Counter, Histogram, start_http_server
 import paho.mqtt.client as paho
@@ -81,8 +81,8 @@ class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
             #  HERE send(publish) message to kafka broker that new user is added
             #  Kafka consumer(subscriber) can then do something with that information
             # Send a message to the topic
-            print("sending message to kafka broker")
-            message_to_kafka = f"Received request from client named {request.name}"
+            #print("sending message to kafka broker")
+            #message_to_kafka = f"Received request from client named {request.name}"
             #producer.send('test-topic', value=message_to_kafka)
             #producer.flush()  # Ensure all messages are sent before closing
             #producer.close()
@@ -109,7 +109,7 @@ class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
 
         # Wait for the MQTT response (with timeout)
         try:
-            response_message = await asyncio.wait_for(mqtt_response_future, timeout=10)
+            response_message = await asyncio.wait_for(mqtt_response_future, timeout=5)
         except asyncio.TimeoutError:
             return service_pb2.FactoryResponse(response_message="Timeout waiting for MQTT response")
 
