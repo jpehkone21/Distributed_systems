@@ -69,7 +69,7 @@ pending_requests = {}
 
 
 class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
-    def SayHello(self, request, context):
+    """def SayHello(self, request, context):
         with RESPONSE_TIME.labels(method="SayHello").time():
             REQUEST_COUNT.labels(method="SayHello", status="success").inc()
             print(f"received sayHello request from {request.name}")
@@ -89,7 +89,7 @@ class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
 
             # Respond with a greeting message
             return service_pb2.HelloResponse(message=f"Hello, {request.name}! (User ID: {response.text})")
-
+        """
     async def Factory(self, request, context):
         # Validate token with the Auth Microservice
         auth_response = auth_stub.ValidateToken(auth_pb2.ValidateRequest(token=request.token))
@@ -109,9 +109,18 @@ class SmartFactory(service_pb2_grpc.SmartFactoryServicer):
 
         # Wait for the MQTT response (with timeout)
         try:
-            response_message = await asyncio.wait_for(mqtt_response_future, timeout=5)
+            response_message = await asyncio.wait_for(mqtt_response_future, timeout=10)
         except asyncio.TimeoutError:
             return service_pb2.FactoryResponse(response_message="Timeout waiting for MQTT response")
+        
+        # To database
+        with RESPONSE_TIME.labels(method="SayHello").time():
+            REQUEST_COUNT.labels(method="SayHello", status="success").inc()
+            # Use REST api to add new user to mongodb
+            myobj = {'name': response_message}
+            response = requests.post("http://127.0.0.1:8000/api/users/create/", json = myobj)
+            print(f"got a response from crud api: {response.text}")
+
 
         return service_pb2.FactoryResponse(response_message=response_message)
 
